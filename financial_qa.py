@@ -14,7 +14,7 @@ sec_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 st.title("Finance Query Assistant")
 
 # Display an image
-st.image("/Users/aameerkhan/Desktop/llm_chatbot/istockphoto-1432903655-612x612.jpg", use_column_width=True)
+st.image("image.jpg", use_column_width=True)
 
 # Check if the token is loaded
 if not sec_key:
@@ -38,24 +38,7 @@ else:
     question = st.text_input("Enter your finance-related question:")
 
     # List of finance-related keywords to check
-    finance_keywords = [
-    "finance", "investment", "stocks", "bonds", "money", "currency", 
-    "budget", "loan", "interest", "credit", "debt", "tax", "savings", 
-    "wealth", "insurance", "net pay", "gross pay", "salary", "income", 
-    "expenses", "profit", "loss", "revenue", "cash flow", "equity", 
-    "dividend", "assets", "liabilities", "capital", "retirement", 
-    "pension", "mortgage", "financial planning", "cash", "valuation", 
-    "portfolio", "hedge", "risk management", "ROI", "asset allocation", 
-    "financial statement", "auditing", "compliance", "accounting", 
-    "ledger", "balance sheet", "net worth", "financial analysis", 
-    "savings account", "checking account", "investment account", 
-    "mutual funds", "exchange-traded funds", "real estate", "credit score", 
-    "loan approval", "interest rate", "compound interest", "simple interest",
-    "payroll", "withholding tax", "deductions", "exemptions", "inflation", 
-    "market trends", "economic indicators", "business cycle", "fiscal policy", 
-    "monetary policy", "financial crisis", "bailout", "subsidy", 
-    "public finance", "private finance", "non-profit finance", "cost-benefit analysis"
-    ]
+    finance_keywords = os.getenv("FINANCE_KEYWORDS").split(",")
 
     if st.button("Ask"):
         if question:
