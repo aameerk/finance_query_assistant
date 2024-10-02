@@ -11,10 +11,10 @@ load_dotenv()
 sec_key = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Initialize the Streamlit application
-st.title("Finance Query Assistant")
+st.title("Financial Query Assistant")
 
 # Display an image
-st.image("image.jpg", use_column_width=True)
+st.image("/Users/aameerkhan/Desktop/llm_chatbot/istockphoto-1432903655-612x612.jpg", use_column_width=True)
 
 # Check if the token is loaded
 if not sec_key:
@@ -46,9 +46,11 @@ else:
             if any(keyword.lower() in question.lower() for keyword in finance_keywords):
                 # Get the response from the LLM
                 response = llm_chain.run(question)
-                # Display the response in Streamlit
-                st.write("Answer:", response)
+                # Display the response in Streamlit as plain text
+                st.text("Answer: ")
+                st.write(response)  # Use st.text to show it as plain text
             else:
                 st.warning("Please ask a finance-related question.")
         else:
             st.write("Please enter a question.")
+
